@@ -1,0 +1,50 @@
+[
+  {
+    "id": "Paragraph 1",
+    "domain": "Artificial Intelligence in Healthcare",
+    "original_text": "Artificial intelligence is rapidly revolutionizing the healthcare industry by enhancing diagnostic precision, optimizing patient treatment plans, and streamlining administrative workflows. Machine learning algorithms can analyze vast amounts of medical imaging data, such as MRI scans and X-rays, to detect anomalies like tumors much faster and often more accurately than human radiologists. Furthermore, AI-powered predictive analytics enable hospitals to forecast patient admission rates, allocate critical resources efficiently, and customize personalized therapy regimens based on a patient's unique genetic profile. However, despite these overwhelming technological benefits, challenges regarding data privacy, algorythmic bias, and the necessity of human oversight remain crucial areas that require rigorous ethical standards and regulations.",
+    "summary": "Machine learning algorithms can analyze vast amounts of medical imaging data, such as MRI scans and X-rays, to detect anomalies like tumors much faster and often more accurately than human radiologists. AI-powered predictive analytics enable hospitals to forecast patient admission rates, allocate critical resources efficiently, and customize personalized therapy regimens.",
+    "key_points": [
+      "Machine learning algorithms can analyze vast amounts of medical imaging data, such as MRI scans and X-rays, to detect anomalies like tumors much faster and often more accurately than human radiologists",
+      "AI-powered predictive analytics enable hospitals to forecast patient admission rates, allocate critical resources efficiently, and customize personalized therapy regimens",
+      "Artificial intelligence is rapidly revolutionizing the healthcare industry by enhancing diagnostic precision, optimizing patient treatment plans, and streamlining administrative workflows",
+      "Furthermore, AI-powered predictive analytics enable hospitals to forecast patient admission rates, allocate critical resources efficiently, and customize personalized therapy regimens based on a patient's unique genetic profile"
+    ],
+    "original_word_count": 109,
+    "summary_word_count": 52,
+    "reduction_percentage": 52.29,
+    "generation_time_sec": 2.52
+  },
+  {
+    "id": "Paragraph 2",
+    "domain": "Renewable Energy and Global Climate Action",
+    "original_text": "The global transition toward renewable energy sources has become one of the most critical imperatives of the 21st century. As fossil fuels continue to contribute significantly to greenhouse gas emissions and global warming, nations worldwide are investing heavily in solar, wind, and hydroelectric power infrastructure. Recent technological breakthroughs have dramatically reduced the manufacturing costs of photovoltaic solar panels and high-capacity battery storage systems, making clean energy economically competitive with traditional power grids. Nevertheless, integrating intermittent renewable sources into legacy energy infrastructure requires massive grid modernization, grid-scale storage solutions, and proactive international policy collaboration to achieve zero-carbon targets.",
+    "summary": "Fossil fuels contribute significantly to greenhouse gas emissions and global warming. Nations worldwide are investing heavily in solar, wind, and hydroelectric power infrastructure. Integrating intermittent renewable sources into legacy energy infrastructure requires massive grid modernization.",
+    "key_points": [
+      "Fossil fuels contribute significantly to greenhouse gas emissions and global warming",
+      "Nations worldwide are investing heavily in solar, wind, and hydroelectric power infrastructure",
+      "Integrating intermittent renewable sources into legacy energy infrastructure requires massive grid modernization",
+      "The global transition toward renewable energy sources has become one of the most critical imperatives of the 21st century"
+    ],
+    "original_word_count": 100,
+    "summary_word_count": 35,
+    "reduction_percentage": 65.0,
+    "generation_time_sec": 1.96
+  },
+  {
+    "id": "Paragraph 3",
+    "domain": "The Psychological Impact of Social Media",
+    "original_text": "Social media platforms have fundamentally altered contemporary human communication, social interaction, and information sharing. While these digital networks foster unprecedented global connectivity, allow instant knowledge access, and empower community building, extensive psychological studies highlight emerging concerns regarding mental health. Continuous exposure to curated digital lifestyles frequently leads to social comparison, anxiety, reduced self-esteem, and sleep disruption among adolescents and young adults. To mitigate these negative psychological side effects, experts strongly recommend implementing digital wellness practices, setting daily screen time limits, and cultivating mindful online engagement habits.",
+    "summary": "Social media platforms have fundamentally altered contemporary human communication, social interaction, and information sharing. Experts strongly recommend implementing digital wellness practices, setting daily screen time limits and cultivating mindful online engagement habits.",
+    "key_points": [
+      "Social media platforms have fundamentally altered contemporary human communication, social interaction, and information sharing",
+      "Experts strongly recommend implementing digital wellness practices, setting daily screen time limits and cultivating mindful online engagement habits",
+      "While these digital networks foster unprecedented global connectivity, allow instant knowledge access, and empower community building, extensive psychological studies highlight emerging concerns regarding mental health",
+      "Continuous exposure to curated digital lifestyles frequently leads to social comparison, anxiety, reduced self-esteem, and sleep disruption among adolescents and young adults"
+    ],
+    "original_word_count": 87,
+    "summary_word_count": 32,
+    "reduction_percentage": 63.22,
+    "generation_time_sec": 1.81
+  }
+]
