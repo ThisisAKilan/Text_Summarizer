@@ -433,9 +433,31 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+import threading
+
+is_model_loading = False
+
+def load_generator_in_background():
+    global generator, is_model_loading
+    is_model_loading = True
+    try:
+        model_name = os.environ.get("MODEL_NAME", "t5-small")
+        print(f"Background loading pre-trained model '{model_name}'...")
+        generator = SmartNotesGenerator(model_name=model_name)
+        print("Model background initialization complete!")
+    except Exception as err:
+        print(f"Background model initialization error: {err}")
+    finally:
+        is_model_loading = False
+
 class RequestHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
-        if self.path == '/' or self.path == '/index.html':
+        if self.path in ['/health', '/healthz', '/ping']:
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b"OK")
+        elif self.path == '/' or self.path == '/index.html':
             self.send_response(200)
             self.send_header('Content-Type', 'text/html; charset=utf-8')
             self.end_headers()
@@ -451,9 +473,13 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
                 payload = json.loads(body.decode('utf-8'))
                 input_text = payload.get('text', '')
                 
-                global generator
+                global generator, is_model_loading
                 if generator is None:
-                    generator = SmartNotesGenerator()
+                    if not is_model_loading:
+                        load_generator_in_background()
+                    # If still None, instantiate directly
+                    if generator is None:
+                        generator = SmartNotesGenerator(model_name=os.environ.get("MODEL_NAME", "t5-small"))
                     
                 result = generator.generate_notes(input_text)
                 
@@ -473,11 +499,6 @@ class ReusableTCPServer(socketserver.TCPServer):
     allow_reuse_address = True
 
 def start_server():
-    global generator
-    print("Initializing Smart Notes Generator Model...")
-    model_name = os.environ.get("MODEL_NAME", "t5-small")
-    generator = SmartNotesGenerator(model_name=model_name)
-    
     env_port = os.environ.get("PORT")
     ports_to_try = [int(env_port)] if env_port else [5000, 8000, 8081, 8888, 10000]
     httpd = None
@@ -496,6 +517,11 @@ def start_server():
         return
 
     print(f"\n[SUCCESS] Smart Study Notes Generator Web App running at http://0.0.0.0:{active_port}")
+    
+    # Start model loading in background thread AFTER port is bound
+    bg_thread = threading.Thread(target=load_generator_in_background, daemon=True)
+    bg_thread.start()
+
     print("Press Ctrl+C to stop the server.")
     try:
         httpd.serve_forever()
