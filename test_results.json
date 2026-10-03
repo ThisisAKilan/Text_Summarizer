@@ -13,7 +13,7 @@
     "original_word_count": 109,
     "summary_word_count": 52,
     "reduction_percentage": 52.29,
-    "generation_time_sec": 2.52
+    "generation_time_sec": 2.59
   },
   {
     "id": "Paragraph 2",
@@ -45,6 +45,6 @@
     "original_word_count": 87,
     "summary_word_count": 32,
     "reduction_percentage": 63.22,
-    "generation_time_sec": 1.81
+    "generation_time_sec": 1.83
   }
 ]

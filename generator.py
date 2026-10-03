@@ -15,10 +15,18 @@ class SmartNotesGenerator:
     def _load_model(self):
         """Initializes the Hugging Face AutoModelForSeq2SeqLM & AutoTokenizer."""
         try:
+            import warnings
+            warnings.filterwarnings("ignore")
             from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+            
+            hf_token = os.environ.get("HF_TOKEN")
+            kwargs = {}
+            if hf_token:
+                kwargs["token"] = hf_token
+
             print(f"Loading pre-trained model '{self.model_name}'...")
-            self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-            self.model = AutoModelForSeq2SeqLM.from_pretrained(self.model_name)
+            self.tokenizer = AutoTokenizer.from_pretrained(self.model_name, **kwargs)
+            self.model = AutoModelForSeq2SeqLM.from_pretrained(self.model_name, **kwargs)
             print("Model & Tokenizer loaded successfully!")
         except Exception as e:
             print(f"Warning: Could not load model '{self.model_name}': {e}")

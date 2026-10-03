@@ -2,8 +2,10 @@ services:
   - type: web
     name: smart-study-notes-generator
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: python web_server.py
     envVars:
       - key: PORT
-        value: 5000
+        value: 10000
+      - key: MODEL_NAME
+        value: t5-small

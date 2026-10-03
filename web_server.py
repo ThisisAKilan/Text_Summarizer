@@ -475,15 +475,17 @@ class ReusableTCPServer(socketserver.TCPServer):
 def start_server():
     global generator
     print("Initializing Smart Notes Generator Model...")
-    generator = SmartNotesGenerator()
+    model_name = os.environ.get("MODEL_NAME", "t5-small")
+    generator = SmartNotesGenerator(model_name=model_name)
     
-    ports_to_try = [5000, 8000, 8081, 8888]
+    env_port = os.environ.get("PORT")
+    ports_to_try = [int(env_port)] if env_port else [5000, 8000, 8081, 8888, 10000]
     httpd = None
     active_port = None
 
     for port in ports_to_try:
         try:
-            httpd = ReusableTCPServer(("", port), RequestHandler)
+            httpd = ReusableTCPServer(("0.0.0.0", port), RequestHandler)
             active_port = port
             break
         except Exception as err:
@@ -493,7 +495,7 @@ def start_server():
         print("Error: Could not bind server to any available port.")
         return
 
-    print(f"\n[SUCCESS] Smart Study Notes Generator Web App running at http://localhost:{active_port}")
+    print(f"\n[SUCCESS] Smart Study Notes Generator Web App running at http://0.0.0.0:{active_port}")
     print("Press Ctrl+C to stop the server.")
     try:
         httpd.serve_forever()
